@@ -1,3 +1,4 @@
+// variables
 var APIKey = "166a433c57516f51dfab1f7edaed8413";
 var city = "";
 var currentDate = "";
@@ -17,7 +18,7 @@ var currentWeatherIconUrl = "";
 var iconcode = "";
 var iconurl = "";
 var country = "";
-
+// list of search cities with empty variable
 var listOfSearchedCities = [];
 
 var getSeachedCitiesFromLS = JSON.parse(localStorage.getItem("searched-cities"));
@@ -85,7 +86,7 @@ function displayCurrentWeather() {
   cardDiv.append(uvIndexEl);
   $("#current-weather-conditions").append(cardDiv);
 }
-
+// dayforcast function
 function displayDayForeCast() { 
   var imgEl = $("<img>").attr("src", iconurl);  
   var cardEl = $("<div class='card'>").addClass("pl-1 bg-primary text-light");
@@ -96,7 +97,7 @@ function displayDayForeCast() {
   var minTempEl = $("<p>").text("Min Temp: " + minTempF + " ºF").css("font-size", "0.60rem");
   var maxTempEl = $("<p>").text("Max Temp: " + maxTempF + " ºF").css("font-size", "0.60rem");
   var humidityEl = $("<p>").text("Humidity: " + dayhumidity + "%").css("font-size", "0.60rem");
-
+// appending element to cards
   cardTextDiv.append(imgEl);
   cardTextDiv.append(minTempEl);
   cardTextDiv.append(maxTempEl);
@@ -175,7 +176,7 @@ function resetGlobalVariables() {
 }
 
 function searchCity(cityName){
- // build URL to query the database
+ // URL to query the database
  console.log(cityName);
  var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + 
  cityName + "&appid=" + APIKey;
@@ -186,7 +187,7 @@ function searchCity(cityName){
    method: "GET"
  })
 
- // store all of the retrieved data inside of an object called "response"
+ // store the retreive data to object "response"
  .then(function(response) {
    var result = response;
    console.log(result);
@@ -197,7 +198,7 @@ function searchCity(cityName){
   currentDate = moment.unix(result.dt).format("l");
   console.log(currentDate);
    var tempK = result.main.temp;
-   // Converts the temp to Kelvin with the below formula
+   // Converts the temp to Kelvin 
    tempF = ((tempK - 273.15) * 1.80 + 32).toFixed(1);
    humidityValue = result.main.humidity;
    windSpeed = result.wind.speed;
