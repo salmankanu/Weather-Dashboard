@@ -108,7 +108,7 @@ function displayDayForeCast() {
   cardEl.append(cardBlockDiv);
   $(".card-deck").append(cardEl);
 }
-
+// card deskheader
 function addCardDeckHeader() {
   deckHeader = $("<h4>").text("5-Day Forecast").attr("id", "card-deck-title");
   deckHeader.addClass("pt-4 pt-2");
@@ -120,7 +120,7 @@ function clearDisplayedWeatherInfo() {
   $("#card-deck-title").remove();
   $(".card-deck").empty();
 }
-
+// display city
 function displayCities(citiesList) {
   $("#searched-cities-card").removeClass("hide");
   var count = 0;
